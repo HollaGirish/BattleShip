@@ -205,7 +205,7 @@ namespace Flare.BattleShip
                 //The game state should continue till all the ships are hit.
                 while (gameState.TotalPositionsOccupied != gameState.TotalHits)
                 {
-                     _userInterface.Display("Please enter Opponent's attack position in format : 'row.column'", MessageType.Info);
+                    _userInterface.Display("Please enter Opponent's attack position in format : 'row.column'", MessageType.Info);
 
                     //Read the attack position.
                     string attachPositionInput = _userInterface.ReadInput();
@@ -228,7 +228,7 @@ namespace Flare.BattleShip
 
                     if (gridBlock == null || !gridBlock.IsShipOccupied)
                     {
-                         _userInterface.Display("Miss: There is no Ship in this position.", MessageType.Warning); //Red color
+                        _userInterface.Display("Miss: There is no Ship in this position.", MessageType.Warning); //Red color
                         _logger.LogInformation("BeginGame: Miss: There is no Ship in this position " + attachPositionInput);
 
                         gameState.IncrimentMiss();
@@ -237,7 +237,7 @@ namespace Flare.BattleShip
                     //Check whether the position is already a Hit position. 
                     if (gridBlock.IsHit)
                     {
-                         _userInterface.Display("Duplicate attack position. As this was already called out.", MessageType.Warning);
+                        _userInterface.Display("Duplicate attack position. As this was already called out.", MessageType.Warning);
                         _logger.LogInformation("BeginGame: Duplicate attack position. As this was already called out" + attachPositionInput);
 
                         continue;
@@ -245,27 +245,13 @@ namespace Flare.BattleShip
 
                     if (gridBlock.IsShipOccupied)
                     {
-                         _userInterface.Display("Hit: There is Ship in this position.", MessageType.Success); //Red color
+                        _userInterface.Display("Hit: There is Ship in this position.", MessageType.Success); //Red color
                         _logger.LogInformation("BeginGame: Hit: There is Ship in this position" + attachPositionInput);
 
                         gridBlock.IsHit = true;
                         gameState.IncrimentHit();
                         continue;
                     }
-
-                    //if (!gridBlock.IsShipOccupied)
-                    //{
-                    //     _userInterface.Display("Miss: There is no Ship in this position."); //Red color
-                    //    gameState.IncrimentMiss();
-                    //    continue;
-                    //}
-                    //else
-                    //{
-                    //     _userInterface.Display("Hit: There is Ship in this position."); //Red color
-                    //    gridBlock.IsHit = true;
-                    //    gameState.IncrimentHit();
-                    //    continue;
-                    //}
                 }
                 //Check if the total hits are reached then display Gameover.
                 if (gameState.TotalPositionsOccupied == gameState.TotalHits)

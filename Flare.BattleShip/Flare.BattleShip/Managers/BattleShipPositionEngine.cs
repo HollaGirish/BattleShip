@@ -25,7 +25,7 @@ namespace Flare.BattleShip
         /// </summary>
         public BattleShipPositionEngine()
         {
-             //Default constructor.
+            //Default constructor.
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Flare.BattleShip
             if (!isNumeric)
                 throw new Exception();
 
-            return new ActualBoardIndexPosition() {  RIndex = rIndex - 1, CIndex = cIndex - 1 };
+            return new ActualBoardIndexPosition() { RIndex = rIndex - 1, CIndex = cIndex - 1 };
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Flare.BattleShip
         /// <returns></returns>
         public UserRepresentationPosition GetUserRepresentationPosition(ActualBoardIndexPosition position)
         {
-            return new UserRepresentationPosition() { RIndex = (position.RIndex + 1).ToString() , CIndex = (position.CIndex + 1).ToString()};
+            return new UserRepresentationPosition() { RIndex = (position.RIndex + 1).ToString(), CIndex = (position.CIndex + 1).ToString() };
         }
 
 
@@ -73,7 +73,7 @@ namespace Flare.BattleShip
             //POSITION (row,col)- length of the ship - alingment (H/V). "1.5,5,V"
             return "Please place the 'Ship {0}' in the following format 'row.col,length,alingment(H/V)'. Example '1.5,6,V' create a ship in 1st row and 5th column of size 6 and place it vertically on the board.";
         }
-        
+
         /// <summary>
         /// This method gets the ship's girid position on board.
         /// </summary>
@@ -179,7 +179,7 @@ namespace Flare.BattleShip
 
             //Validate the position, which is in (row.col) format.
             UserRepresentationPosition userRepPos = ValidatePosition(splitDetails[0]);
-            if(userRepPos.HasError)
+            if (userRepPos.HasError)
             {
                 inputShipInfo.ErrorCode = userRepPos.ErrorCode;
                 return inputShipInfo;
@@ -248,53 +248,5 @@ namespace Flare.BattleShip
 
             return inputShipInfo;
         }
-
-        ///// <summary>
-        ///// This method validates the ships position details.
-        ///// </summary>
-        ///// <param name="boardSize"></param>
-        ///// <param name="splitDetails"></param>
-        ///// <param name="inputShipInfo"></param>
-        //void ValidatePositionDetails(int boardSize, string[] splitDetails, InputShipInfo inputShipInfo)
-        //{
-        //    // Validate the position details of the ship. Valid format is row.col
-        //    string[] shipPosDetails = splitDetails[0].Split('.', StringSplitOptions.RemoveEmptyEntries);
-
-        //    int rIndex;
-        //    int cIndex;
-
-        //    //Check for row and col position is numeric. If not return error value -2.
-        //    bool isNumeric = int.TryParse(shipPosDetails[0], out rIndex);
-        //    if (!isNumeric)
-        //    {
-        //        inputShipInfo.ErrorCode = BattleShipError.InvalidRowOrColPositionFormat;
-        //        return;
-        //    }
-
-        //    isNumeric = int.TryParse(shipPosDetails[1], out cIndex);
-        //    if (!isNumeric)
-        //    {
-        //        inputShipInfo.ErrorCode = BattleShipError.InvalidRowOrColPositionFormat;
-        //        return;
-        //    }
-
-        //    //Check for the entered row and column is valid position.
-        //    if (rIndex <= 0 || rIndex > _boardSize)
-        //    {
-        //        inputShipInfo.ErrorCode = BattleShipError.InvalidRowPositionOutOfGrid;
-        //        return;
-        //    }
-
-        //    if (rIndex <= 0 || rIndex > _boardSize)
-        //    {
-        //        inputShipInfo.ErrorCode = BattleShipError.InvalidColumnPositionOutOfGrid;
-        //        return;
-        //    }
-
-        //    inputShipInfo.StartingRowPosition = rIndex;
-        //    inputShipInfo.StartingColPosition = cIndex;
-
-        //    return;
-        //}
     }
 }

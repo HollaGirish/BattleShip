@@ -24,8 +24,6 @@ namespace Flare.BattleShip
             ServiceProvider serviceProvider = services.BuildServiceProvider();
             IBattleShipShipManager battleShipManager = serviceProvider.GetService<IBattleShipShipManager>();
 
-            //BattleShipShipManager battleShipManager = new BattleShipShipManager(boardSize);
-
             //Create a board.
             battleShipManager.CreateBoard();
 
@@ -44,13 +42,11 @@ namespace Flare.BattleShip
             services.AddLogging(configure => configure.AddSerilog(
                          new LoggerConfiguration()
                          .WriteTo.File("log.txt")
-                         //.ReadFrom.Configuration(configuration)
+                        //.ReadFrom.Configuration(configuration)
                         .CreateLogger()))
-                        .AddTransient<IBattleShipShipManager,BattleShipShipManager>()
-                        .AddTransient<IBattleShipPositionEngine,BattleShipPositionEngine>()
+                        .AddTransient<IBattleShipShipManager, BattleShipShipManager>()
+                        .AddTransient<IBattleShipPositionEngine, BattleShipPositionEngine>()
                         .AddTransient<IUserInterface, UserInterface>();
         }
-
-
     }
 }
