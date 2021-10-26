@@ -12,4 +12,4 @@ Note: Board size is 10X10
 4. Next Player1 will be prompted for the attack position from Player2. Format "{Row Position}.{Column Position}" eg 1.7 (1st Row and 7th Column).
 5. The Game will display eithet a "Hit" or a "Miss" or "Duplicate posion called out".
 6. The game continues till all the ships are "Hit".
-7. Once all the ships are "Hit", the game will end providing the stats.
+7. Once all the ships are "Hit", the game will end providing the statistics.
