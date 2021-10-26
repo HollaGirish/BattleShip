@@ -41,6 +41,7 @@ namespace Flare.BattleShip
 
         public string ReadInput()
         {
+            Console.ForegroundColor = ConsoleColor.White;
             return Console.ReadLine();
         }
     }

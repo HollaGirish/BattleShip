@@ -45,6 +45,7 @@ namespace Flare.BattleShip
                 _logger.LogInformation("Begin: Getting battle ship count as user input");
                 int battleShipCount = 0;
                 _userInterface.Display("Please Select Number of battle ships that you want to place",MessageType.Info);
+                int maxBattleShipCount = BoardSize * BoardSize;
                 while (true)
                 {
                     //TODO: Move to IO class.
@@ -53,6 +54,11 @@ namespace Flare.BattleShip
                     bool isNumeric = int.TryParse(inputBattleShipCount, out battleShipCount);
                     if (isNumeric)
                     {
+                        if(battleShipCount > maxBattleShipCount)
+                        {
+                            _userInterface.Display(string.Format("Error: Invalid selection. You can have only {0} Battle Ships on this board", maxBattleShipCount), MessageType.Failure);
+                            continue;
+                        }
                         this.SelectedBattleShipCount = battleShipCount;
                         break;
                     }
@@ -96,13 +102,15 @@ namespace Flare.BattleShip
             try
             {
                 _logger.LogInformation("Begin: Create Battleship board.");
-                string newShipName = string.Format("Ship #{0}", _ships.Count + 1);
 
                 //Loop until the desired number of battle ships are not created.
                 while (this._ships.Count < this.SelectedBattleShipCount)
                 {
                     //POSITION (row,col)- length of the ship - alingment (H/V). "1.5,5,V"
                      _userInterface.Display(string.Format(_battleShipPositionEngine.GetExampleString(), _ships.Count + 1), MessageType.Info);
+
+                    //Generate the ship name.
+                    string newShipName = string.Format("Ship #{0}", _ships.Count + 1);
 
                     //Capture the ship's position , size and the direction.
                     string startingPosition = _userInterface.ReadInput();

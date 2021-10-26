@@ -18,17 +18,17 @@
                 case BattleShipError.InvalidBattleShipCount:
                     return "Number of ships entered is more than the maximum number of ships that can be placed.";
                 case BattleShipError.InvalidShipDetailsFormat:
-                    return "Details entered are not entered according to the format. Please follow the example.";
+                    return "Details entered are not according to the format. Please follow the example.";
                 case BattleShipError.InvalidRowOrColPositionFormat:
                     return "Details entered for coordinates are not according to the format.";
                 case BattleShipError.InvalidRowPositionOutOfGrid:
-                    return "Row position entered is causing out of grid placement for the ship.";
+                    return "Row position entered is out of the Board.";
                 case BattleShipError.InvalidColumnPositionOutOfGrid:
-                    return "Column position entered is causing out of grid placement for the ship.";
+                    return "Column position entered is out of the Board.";
                 case BattleShipError.InvalidShipLengthFormat:
                     return "Length of the ship entered is not  according to the format.";
                 case BattleShipError.InvalidShipLengthOutOfGrid:
-                    return "Length of the ship entered  is causing   out of grid placement for the ship.";
+                    return "Length of the ship entered is causing out of grid placement for the ship.";
                 case BattleShipError.InvalidAlignment:
                     return "Alignment are not entered according to the format";
                 default:
